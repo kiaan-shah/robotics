@@ -1,0 +1,15 @@
+int a = 15;
+int b = 25;
+int c = a + b;
+
+void setup()
+{
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  Serial.println(c);
+  delay(3000);
+  
+}
