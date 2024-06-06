@@ -1,0 +1,37 @@
+int a = 0;
+int b = 0;
+
+void setup()  {
+  pinMode(3, INPUT);
+  pinMode(4, INPUT);
+  pinMode(5, OUTPUT);
+  Serial.begin(9600);
+}
+void loop()  {
+    a = digitalRead(3);
+    b = digitalRead(4);
+   
+   if(a == 1)  {
+      if(b == 1) { 
+          digitalWrite(5, 100);
+          Serial.print("Brightness: 100%"); 
+          delay(400);
+      } else {
+          digitalWrite(5, 75); 
+          Serial.print("Brightness: 75%"); 
+          delay(400);
+      }   } else {
+       if(b == 1) {
+         digitalWrite(5, 50);
+         Serial.print("Brightness: 50%"); 
+         delay(400);
+       } else {
+           digitalWrite(5, 25);
+           Serial.print("Brightness: 25%");
+           delay(400);
+
+
+    
+  }
+}
+}
