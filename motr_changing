@@ -1,0 +1,59 @@
+int a = 0;
+int data = 0;
+int b = a % 10;
+int c = a / 10 % 10;
+int d = a / 100;
+void setup()  {
+  pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(11, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()  {
+  if(Serial.available())  {
+    a = Serial.parseInt();
+    if(b == 0, 1, 2, 3, 4)  {
+      pinMode(5, OUTPUT);
+      pinMode(6, OUTPUT);      
+      }
+    if(b == 5, 6, 7, 8, 9)  {
+      pinMode(10, OUTPUT);
+      pinMode(11, OUTPUT);      
+      }
+    if(c == 0, 1, 2, 3, 4)  {
+      if(b == 0, 1, 2, 3, 4)  {  
+        pinMode(5, HIGH);
+        pinMode(6, LOW);
+        analogWrite(5, d);
+        analogWrite(6, 0);
+          }
+      }
+    if(c == 0, 1, 2, 3, 4)  {
+      if(b == 5, 6, 7, 8, 9)  {  
+        pinMode(5, LOW);
+        pinMode(6, HIGH);  
+        analogWrite(6, d);
+        analogWrite(5, 0);   
+          }
+      }
+    if(c == 5, 6, 7, 8, 9)  {
+      if(b == 0, 1, 2, 3, 4)  {  
+        pinMode(10, HIGH);
+        pinMode(11, LOW); 
+        analogWrite(10, d);
+        analogWrite(11, 0);    
+      }
+      }
+    if(c == 5, 6, 7, 8, 9)  {
+      if(b == 5, 6, 7, 8, 9)  {  
+        pinMode(10, LOW);
+        pinMode(11, HIGH); 
+        analogWrite(11, d);
+        analogWrite(10, 0);    
+          }
+      }
+      
+    }
+    
