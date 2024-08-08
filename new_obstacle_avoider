@@ -1,0 +1,110 @@
+int ls = 0;
+int ms = 0;
+int rs = 0;
+
+void setup() {
+  pinMode(5, OUTPUT);
+  pinMode(3, OUTPUT);
+  pinMode(9, OUTPUT);
+  pinMode(10, OUTPUT);
+}
+
+void forward(){
+  digitalWrite(5, LOW);
+  analogWrite(3, 200);
+  digitalWrite(9, HIGH);
+  digitalWrite(10, LOW);  
+}
+//this functions makes the robot go forward
+
+void backward(){
+  analogWrite(5, 200);
+  digitalWrite(3, LOW);
+  digitalWrite(9, LOW);
+  digitalWrite(10, HIGH);
+}
+//this function makes the robot go backward
+
+void brake(){
+  digitalWrite(5, LOW);
+  digitalWrite(3, LOW);
+  digitalWrite(9, LOW);
+  digitalWrite(10, LOW);
+}
+//this function makes the robot stop
+
+void right(){
+  digitalWrite(5, HIGH);
+  digitalWrite(3, LOW);
+  digitalWrite(9, HIGH);
+  digitalWrite(10, LOW);
+}
+//this makes the robot go right
+
+void left(){
+  digitalWrite(5, LOW);
+  digitalWrite(3, HIGH);
+  digitalWrite(9, LOW);
+  digitalWrite(10, HIGH);
+}
+
+
+void loop() {
+  ls = digitalRead(A0);
+  ms = digitalRead(A1);
+  rs = digitalRead(A2);
+  //sets the pins for the IR sensor
+  if (ls == 1 && ms == 1 && rs == 1) {
+    forward();
+  }
+  //this is when nothing is in front of the robot
+  else if (ls == 1 && ms == 1 && rs == 0) {
+    backward();
+    delay(400);
+    right();
+    delay(400);
+  }
+  //this is nothing on the right of the robot
+  else if (ls == 1 && ms == 0 && rs == 1) {
+    backward();
+    delay(400);
+    left();
+    delay(400);
+  }
+  //this is nothing in the middle of the robot
+  else if (ls == 1 && ms == 0 && rs == 0) {
+    backward();
+    delay(400);
+    right();
+    delay(400);
+  }
+  //this is something on the left of the robot
+  else if (ls == 0 && ms == 1 && rs == 1) {
+    backward();
+    delay(400);
+    right();
+    delay(400);
+  }
+  //this is nothing on the left of the robot
+  else if (ls == 0 && ms == 1 && rs == 0) {
+    backward();
+    delay(400);
+    right();
+    delay(400);
+  }
+  //this is something on the middle of the robot
+  else if (ls == 0 && ms == 0 && rs == 1) {
+    backward();
+    delay(400);
+    left();
+    delay(400);
+  }
+  //this is nothing on the left of the robot
+  else if (ls == 0 && ms == 0 && rs == 0) {
+    backward();
+    delay(400);
+    right();
+    delay(400);
+  }
+  //all sides of the front of the robot is occupied with something
+}
